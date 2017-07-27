@@ -1,0 +1,32 @@
+web:
+  extends:
+    file: docker-compose.common.yml
+    service: web
+  command: 'bash -c ''node server.js'''
+  ports:
+    - 3000
+  environment:
+    NODE_ENV: 'production'
+    VIRTUAL_HOST: ${VIRTUAL_HOST}
+  # links:
+  #   - herokuPostgresql
+  #   - herokuRedis
+# shell:
+#   extends:
+#     file: docker-compose.common.yml
+#     service: web
+#   command: bash
+#   environment:
+#     NODE_ENV: 'production'
+#   links:
+#     - herokuPostgresql
+#     - herokuRedis
+# herokuPostgresql:
+#   extends:
+#     file: docker-compose.common.yml
+#     service: herokuPostgresql
+# herokuRedis:
+#   image: redis
+#   extends:
+#     file: docker-compose.common.yml
+#     service: herokuRedis

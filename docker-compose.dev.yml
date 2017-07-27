@@ -1,0 +1,29 @@
+web:
+  extends:
+    file: docker-compose.common.yml
+    service: web
+  volumes:
+    - ./src:/app/user/src
+  environment:
+    NODE_ENV: 'development'
+  ports:
+    - '3000:3000'
+    - '3001:3001'
+    - '3002:3002'
+  tty: true
+  stdin_open: true
+  read_only: false
+#   links:
+#     - herokuPostgresql
+#     - herokuRedis
+# herokuPostgresql:
+#   ports:
+#     - '5432:5432'
+#   extends:
+#     file: docker-compose.common.yml
+#     service: herokuPostgresql
+# herokuRedis:
+#   image: redis
+#   extends:
+#     file: docker-compose.common.yml
+#     service: herokuRedis
